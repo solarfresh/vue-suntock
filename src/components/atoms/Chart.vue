@@ -1,5 +1,9 @@
 <template>
-  <canvas ref="chart"></canvas>
+  <canvas
+    :width="width"
+    :height="height"
+    ref="chart">
+  </canvas>
 </template>
 
 <script>
@@ -8,6 +12,14 @@ import Chart from 'chart.js'
 export default {
   name: 'Chart',
   props: {
+    width: {
+      default: 400,
+      type: Number
+    },
+    height: {
+      default: 400,
+      type: Number
+    },
     type: {
       type: String,
       required: true
@@ -26,11 +38,19 @@ export default {
       chart: null
     }
   },
+  computed: {
+    canvas: function () {
+        return this.$refs['chart'];
+    },
+    ctx: function () {
+        return this.canvas.getContext('2d');
+    }
+  },
   mounted () {
     if (this.$data._chart) this.$data._chart.destroy();
 
     this.$data.chart = new Chart(
-      this.$refs['chart'].getContext('2d'), {
+      this.ctx, {
       type: this.type,
       data: this.data,
       options: this.options

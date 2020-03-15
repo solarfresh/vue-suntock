@@ -9,15 +9,13 @@
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld';
-import AppBar from '@/components/AppBar/AppBar';
+import AppBar from '@/components/organisms/AppBar';
 
 export default {
   name: 'App',
 
   components: {
     AppBar,
-    // HelloWorld,
   },
 
   data: () => ({
