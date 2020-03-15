@@ -2,11 +2,9 @@
   <v-container fluid>
     <v-row no-gutters>
       <v-col>
-        <chart 
-          :height="100"
-          :type="'line'"
-          :data="lineData">
-        </chart>
+        <trand-chart
+          :title="'分類趨勢'"
+        />
       </v-col>
     </v-row>
     <v-row no-gutters>
@@ -31,12 +29,14 @@
 </template>
 
 <script>
+import TrendChart from '@/components/organisms/TrendChart';
 import Chart from '@/components/atoms/Chart';
 
 export default {
   name: 'BWIBBU',
   components: {
-    'chart': Chart
+    'chart': Chart,
+    'trand-chart': TrendChart
   },
   data () {
     return {
